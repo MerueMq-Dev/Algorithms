@@ -22,20 +22,6 @@ namespace AlgorithmsDataStructures
             list.AddInTail(ninethNode2);
             list.AddInTail(secondNode);
 
-            var currentNode = list.head;
-            while(currentNode != null)
-            {
-                Console.WriteLine($"Before Insert: {currentNode.value}");
-                currentNode = currentNode.next;
-            }
-            list.InsertAfter(null, testNode2);
-
-            currentNode = list.head;
-            while (currentNode != null)
-            {
-                Console.WriteLine($"After Insert: {currentNode.value}");
-                currentNode = currentNode.next;
-            }
 
             var secondList = new LinkedList();
             var fourthNode = new Node(4);
