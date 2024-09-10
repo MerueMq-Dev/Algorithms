@@ -121,11 +121,20 @@ namespace AlgorithmsDataStructures
                 }
             }
 
-            if (tail?.value != null && tail.value == _value)
+            
+            while (tail != null && tail.value == _value)
             {
-                tail = tail.prev;
-                tail.next = null;
+                if (head == tail)
+                {
+                    Clear();
+                }
+                else
+                {
+                    tail = tail.prev;
+                    tail.next = null;
+                }
             }
+         
             
             Node node = head;
             while (node != null)
