@@ -18,8 +18,8 @@ namespace AlgorithmsDataStructures
             if (_firstList.Count() != _secondList.Count())
                 return result;
 
-            Node firstListPointer = _firstList.head;
-            Node secondListPointer = _secondList.head;
+            Node2 firstListPointer = _firstList.head;
+            Node2 secondListPointer = _secondList.head;
 
             while (firstListPointer != null && secondListPointer != null)
             {

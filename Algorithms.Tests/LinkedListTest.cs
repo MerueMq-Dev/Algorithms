@@ -11,17 +11,17 @@ namespace Algorithms.Tests
     public class LinkedListTest
     {
         [Fact]
-        public void Remove_ShouldRemoveNodeAndReturnTrue_WhenElementExists()
+        public void Remove_ShouldRemoveNode2AndReturnTrue_WhenElementExists()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
             foreach(var node in nodes)
             {
                 list.AddInTail(node);
             }
             var expectedList = new LinkedList();
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
@@ -36,14 +36,14 @@ namespace Algorithms.Tests
         public void Remove_ShouldNotChangeListAndReturnFalse_WhenElementNotFound()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
             var expectedList = new LinkedList();
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
@@ -54,17 +54,17 @@ namespace Algorithms.Tests
         }
 
         [Fact]
-        public void RemoveAll_ShouldRemoveNodes_WhenElementExists()
+        public void RemoveAll_ShouldRemoveNode2s_WhenElementExists()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(3), new Node(1), new Node(2), new Node(3), new Node(4), new Node(5), new Node(3) };
+            List<Node2> nodes = new List<Node2>() { new Node2(3), new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5), new Node2(3) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
             var expectedList = new LinkedList();
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
@@ -77,15 +77,15 @@ namespace Algorithms.Tests
         public void RemoveAll_ShouldNotChangeList_WhenElementNotFound()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(4), new Node2(5) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
 
             var expectedList = new LinkedList();
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
@@ -100,7 +100,7 @@ namespace Algorithms.Tests
         public void Clear_ShouldClearList_WhenListIsNotEmpty()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(3), new Node(1), new Node(2), new Node(3), new Node(4), new Node(5), new Node(3) };
+            List<Node2> nodes = new List<Node2>() { new Node2(3), new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5), new Node2(3) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
@@ -115,14 +115,14 @@ namespace Algorithms.Tests
         public void FindAll_ShouldReturnAllMatchingElements_WhenTheyExist()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(3), new Node(1), new Node(2), new Node(3), new Node(4), new Node(5), new Node(3) };
+            List<Node2> nodes = new List<Node2>() { new Node2(3), new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5), new Node2(3) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
-            var findedNodesCount = list.FindAll(3).Count;
-            var expectedNodesCount =  3;
-            Assert.Equal(expectedNodesCount, findedNodesCount);
+            var findedNode2sCount = list.FindAll(3).Count;
+            var expectedNode2sCount =  3;
+            Assert.Equal(expectedNode2sCount, findedNode2sCount);
         }
 
 
@@ -130,14 +130,14 @@ namespace Algorithms.Tests
         public void FindAll_ShouldReturnEmptyList_WhenElementsNotPresent()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(3), new Node(1), new Node(2), new Node(3), new Node(4), new Node(5), new Node(3) };
+            List<Node2> nodes = new List<Node2>() { new Node2(3), new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5), new Node2(3) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
-            var findedNodesCount = list.FindAll(152).Count;
-            var expectedNodesCount = 0;
-            Assert.Equal(expectedNodesCount, findedNodesCount);
+            var findedNode2sCount = list.FindAll(152).Count;
+            var expectedNode2sCount = 0;
+            Assert.Equal(expectedNode2sCount, findedNode2sCount);
         }
 
 
@@ -155,7 +155,7 @@ namespace Algorithms.Tests
         public void Count_ShouldReturnFive_WhenFiveElementsExist()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
@@ -170,16 +170,16 @@ namespace Algorithms.Tests
         public void InsertAfter_ShouldInsertElement_WhenTargetElementFound()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
             
             var expectedList = new LinkedList();
-            var nodeToInsert = new Node(12);
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), nodeToInsert, new Node(3), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            var nodeToInsert = new Node2(12);
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), nodeToInsert, new Node2(3), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
@@ -196,21 +196,21 @@ namespace Algorithms.Tests
         public void InsertAfter_ShouldNotChangeList_WhenElementNotFound()
         {
             var list = new LinkedList();
-            List<Node> nodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
+            List<Node2> nodes = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
             foreach (var node in nodes)
             {
                 list.AddInTail(node);
             }
 
             var expectedList = new LinkedList();
-            List<Node> expectedNodes = new List<Node>() { new Node(1), new Node(2), new Node(3), new Node(4), new Node(5) };
-            foreach (var node in expectedNodes)
+            List<Node2> expectedNode2s = new List<Node2>() { new Node2(1), new Node2(2), new Node2(3), new Node2(4), new Node2(5) };
+            foreach (var node in expectedNode2s)
             {
                 expectedList.AddInTail(node);
             }
 
-            var nodeAfter = new Node(16);
-            var nodeToInsert = new Node(12);
+            var nodeAfter = new Node2(16);
+            var nodeToInsert = new Node2(12);
 
             list.InsertAfter(nodeAfter, nodeToInsert);
 

@@ -1,43 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
 {
-
-  
-    public class LinkedList
+    public class Node
     {
-        public Node2 head;
-        public Node2 tail;
+        public int value;
+        public Node next, prev;
 
-        public LinkedList()
+        public Node(int _value) { 
+            value = _value; 
+            next = null;
+            prev = null;
+        }
+    }
+
+    public class LinkedList2
+    {
+        public Node head;
+        public Node tail;
+
+        public LinkedList2()
         {
             head = null;
             tail = null;
         }
 
-        public void AddInTail(Node2 _item)
+        public void AddInTail(Node _item)
         {
-            if (head == null) head = _item;
-            else tail.next = _item;
+            if (head == null) {
+                head = _item;
+                head.next = null;
+                head.prev = null;
+            } else {
+                tail.next = _item;
+                _item.prev = tail;
+            }
             tail = _item;
         }
 
-        public Node2 Find(int _value)
+        public Node Find(int _value)
         {
-            Node2 node = head;
+            Node node = head;
             while (node != null)
             {
                 if (node.value == _value) return node;
                 node = node.next;
             }
+
             return null;
         }
 
-        public List<Node2> FindAll(int _value)
+        public List<Node> FindAll(int _value)
         {
-            List<Node2> nodes = new List<Node2>();
-            Node2 node = head;
+            List<Node> nodes = new List<Node>();
+            Node node = head;
             while (node != null)
             {
                 if (node.value == _value) nodes.Add(node);
@@ -60,25 +76,26 @@ namespace AlgorithmsDataStructures
                 else
                 {
                     head = head.next;
+                    head.prev = null;
                 }
                 return true;
             }
 
-            Node2 node = head;
-            Node2 previousNode2 = head;
+            Node node = head;
+            
             while (node != null)
             {
                 if (node.value == _value)
                 {
-                    previousNode2.next = node.next;
+                    node.prev.next = node.next;
 
                     if (node == tail)
                     {
-                        tail = previousNode2;
+                        tail = node.prev;
+                        tail.next = null;
                     }
                     return true;
                 }
-                previousNode2 = node;
                 node = node.next;
             }
             return false;
@@ -86,7 +103,6 @@ namespace AlgorithmsDataStructures
 
         public void RemoveAll(int _value)
         {
-
             if (head == null)
                 return;
 
@@ -99,49 +115,46 @@ namespace AlgorithmsDataStructures
                 else
                 {
                     head = head.next;
+                    head.prev = null;
                 }
             }
 
-            Node2 node = head;
-            Node2 previousNode2 = head;
+            Node node = head;
             while (node != null)
             {
                 if (node.value == _value)
                 {
-                    previousNode2.next = node.next;
-
+                    node.prev.next = node.next;
+                    
                     if (node == tail)
                     {
-                        tail = previousNode2;
+                        tail = node.prev;
                     }
                 }
-                else
-                {
-                    previousNode2 = node;
-                }
                 node = node.next;
-            }       
+            }     
         }
 
         public void Clear()
         {
-            tail = null;
             head = null;
+            tail = null;
         }
 
         public int Count()
         {
-            int nodesCount = 0;
-            Node2 node = head;
+            int count = 0;
+            Node node = head;
             while (node != null)
             {
-                nodesCount++;
+                count++;
                 node = node.next;
             }
-            return nodesCount;
+
+            return count;
         }
 
-        public void InsertAfter(Node2 _nodeAfter, Node2 _nodeToInsert)
+        public void InsertAfter(Node _nodeAfter, Node _nodeToInsert)
         {
             if (_nodeToInsert == null)
             {
@@ -158,13 +171,16 @@ namespace AlgorithmsDataStructures
             if (_nodeAfter == null && head != null)
             {
                 _nodeToInsert.next = head;
+                _nodeToInsert.prev = null;
+                head.prev = _nodeToInsert;
                 head = _nodeToInsert;
                 return;
             }
-
+            
             if (head == tail)
             {
                 head.next = _nodeToInsert;
+                _nodeToInsert.prev = head;
                 tail = _nodeToInsert;
                 return;
             }
@@ -172,18 +188,24 @@ namespace AlgorithmsDataStructures
             if (_nodeAfter == tail)
             {
                 tail.next = _nodeToInsert;
+                _nodeToInsert.prev = tail;
+                _nodeToInsert.next = null;
                 tail = tail.next;
                 return;
             }
 
-            Node2 node = head;
+            Node node = head;
             while (node != null)
             {
                 if (_nodeAfter == node)
                 {
-                    var temp = node.next;
+                    _nodeToInsert.prev = node;
+                    _nodeToInsert.next = node.next;
+                    _nodeToInsert.next.prev = _nodeToInsert;
                     node.next = _nodeToInsert;
-                    node.next.next = temp;
+                    // var temp = node.next;
+                    // node.next = _nodeToInsert;
+                    // _nodeToInsert.next = temp;
                     return;
                 }
                 node = node.next;
