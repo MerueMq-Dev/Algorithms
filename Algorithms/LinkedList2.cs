@@ -81,19 +81,21 @@ namespace AlgorithmsDataStructures
                 return true;
             }
 
-            Node node = head;
+            if (tail.value == _value)
+            {
+                tail = tail.prev;
+                tail.next = null;
+                return true;
+            }
             
+            
+            Node node = head;
             while (node != null)
             {
                 if (node.value == _value)
                 {
                     node.prev.next = node.next;
-
-                    if (node == tail)
-                    {
-                        tail = node.prev;
-                        tail.next = null;
-                    }
+                    node.next.prev = node.prev;    
                     return true;
                 }
                 node = node.next;
@@ -119,17 +121,19 @@ namespace AlgorithmsDataStructures
                 }
             }
 
+            if (tail.value == _value)
+            {
+                tail = tail.prev;
+                tail.next = null;
+            }
+            
             Node node = head;
             while (node != null)
             {
                 if (node.value == _value)
                 {
-                    node.prev.next = node.next;
-                    
-                    if (node == tail)
-                    {
-                        tail = node.prev;
-                    }
+                    node.next.prev = node?.prev;
+                    node.prev.next = node?.next;
                 }
                 node = node.next;
             }     
@@ -203,9 +207,6 @@ namespace AlgorithmsDataStructures
                     _nodeToInsert.next = node.next;
                     _nodeToInsert.next.prev = _nodeToInsert;
                     node.next = _nodeToInsert;
-                    // var temp = node.next;
-                    // node.next = _nodeToInsert;
-                    // _nodeToInsert.next = temp;
                     return;
                 }
                 node = node.next;

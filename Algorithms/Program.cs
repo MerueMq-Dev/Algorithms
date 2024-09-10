@@ -11,21 +11,21 @@ namespace AlgorithmsDataStructures
             var list = new LinkedList2();
             var node1 = new Node(1);
             // var node2 = new Node(2);
-            var node11 = new Node(1);
-            // var node3 = new Node(3);
-            // var node4 = new Node(4);
-            var node12 = new Node(1);
+            var node11 = new Node(11);
+            var node3 = new Node(1);
+            var node4 = new Node(1);
+            var node12 = new Node(12);
             // var node5 = new Node(5);
-            var node13 = new Node(1);
+            var node13 = new Node(13);
             
             list.AddInTail(node1);
             // list.AddInTail(node2);
-            // list.AddInTail(node11);
-            // list.AddInTail(node3);
-            // list.AddInTail(node4);
-            // list.AddInTail(node12);
+            list.AddInTail(node11);
+            list.AddInTail(node3);
+            list.AddInTail(node12);
+            list.AddInTail(node4);
             // list.AddInTail(node5);
-            // list.AddInTail(node13);
+            list.AddInTail(node13);
             
             var currentNode = list.head;
             Console.WriteLine("BEFORE");
@@ -33,7 +33,11 @@ namespace AlgorithmsDataStructures
                 Console.WriteLine("List is empty");
             while (currentNode != null)
             {
-                Console.WriteLine($"value: {currentNode.value}");
+                Console.WriteLine($"----------------------------------------------------------------------");
+                Console.WriteLine($"previous  value: {currentNode?.prev?.value}");
+                Console.WriteLine($"current value: {currentNode?.value}");
+                Console.WriteLine($"next value: {currentNode?.next?.value}");
+                Console.WriteLine($"----------------------------------------------------------------------");
                 currentNode = currentNode.next;
             }
 
@@ -41,7 +45,7 @@ namespace AlgorithmsDataStructures
             Console.WriteLine($"elementsCount {elementsCount}");
 
             var newNode = new Node(22);
-            list.InsertAfter(null,newNode);
+            list.RemoveAll(13);
             
             Console.WriteLine("AFTER");
             currentNode = list.head;
@@ -49,7 +53,11 @@ namespace AlgorithmsDataStructures
                 Console.WriteLine("List is Empty");
             while (currentNode != null)
             {
-                Console.WriteLine($"value: {currentNode.value}");
+                Console.WriteLine($"----------------------------------------------------------------------");
+                Console.WriteLine($"previous  value: {currentNode?.prev?.value}");
+                Console.WriteLine($"current value: {currentNode?.value}");
+                Console.WriteLine($"next value: {currentNode?.next?.value}");
+                Console.WriteLine($"----------------------------------------------------------------------");
                 currentNode = currentNode.next;
             }
             
