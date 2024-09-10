@@ -121,7 +121,7 @@ namespace AlgorithmsDataStructures
                 }
             }
 
-            if (tail.value == _value)
+            if (tail?.value != null && tail.value == _value)
             {
                 tail = tail.prev;
                 tail.next = null;
