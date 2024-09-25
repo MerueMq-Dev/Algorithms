@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynArrayTest.cs" />
     <Compile Include="LinkedList2Test.cs" />
     <Compile Include="LinkedListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

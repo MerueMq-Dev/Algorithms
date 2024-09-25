@@ -18,6 +18,17 @@ namespace AlgorithmsDataStructures
             MakeArray(16);
         }
 
+        public DynArray(params T[] elements)
+        {
+            count = 0;
+            MakeArray(16);
+            foreach (var element in elements)
+            {
+                Append(element);
+            }
+            
+        }
+        
         public void MakeArray(int new_capacity)
         {
             capacity = new_capacity < 16 ? 16 : new_capacity;
