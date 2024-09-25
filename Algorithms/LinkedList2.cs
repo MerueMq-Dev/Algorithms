@@ -25,6 +25,16 @@ namespace AlgorithmsDataStructures
             tail = null;
         }
 
+        public LinkedList2(params Node[] nodes)
+        {
+            head = null;
+            tail = null;
+            foreach (var node in nodes)
+            {
+                AddInTail(node);
+            }
+        }
+        
         public void AddInTail(Node _item)
         {
             if (head == null) {
