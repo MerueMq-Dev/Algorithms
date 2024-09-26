@@ -5,12 +5,22 @@ namespace AlgorithmsDataStructures
 {
     public class Stack<T>
     {
-        private readonly List<T> _stackSource;
+        public readonly List<T> _stackSource;
 
         public Stack()
         {
             _stackSource = new List<T>();
         }
+        
+        public Stack(params T[] elements)
+        {
+            _stackSource = new List<T>();
+            foreach (var element in elements)
+            {
+                this._stackSource.Add(element);
+            }
+        }
+        
 
         public int Size()
         {
