@@ -17,7 +17,7 @@ namespace AlgorithmsDataStructures
             _stackSource = new List<T>();
             foreach (var element in elements)
             {
-                this._stackSource.Add(element);
+                Push(element);
             }
         }
         
