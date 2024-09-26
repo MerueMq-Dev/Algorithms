@@ -24,6 +24,7 @@ namespace Algorithms.Tests
             var expectedSize = 0;
 
             var size = stack.Size();
+            
             size.Should().Be(expectedSize);
         }
         

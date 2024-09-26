@@ -4,12 +4,21 @@ namespace AlgorithmsDataStructures
 {
     public class Queue<T>
     {
-        private readonly List<T> _queueSource;
+        public readonly List<T> _queueSource;
         public Queue()
         {
             _queueSource = new List<T>();
-        } 
+        }
+        public Queue(params T[] elements)
+        {
+            _queueSource = new List<T>();
 
+            foreach (var element in elements)
+            {
+                Enqueue(element);
+            }
+        } 
+        
         public void Enqueue(T item)
         {
             _queueSource.Add(item);
