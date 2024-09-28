@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
 {
-    public static class LinkedListExtention
+    public static class LinkedListExtension
     {
         public static List<int> SumOfTwoLists(this LinkedList _firstList, LinkedList _secondList)
         {
@@ -21,7 +17,7 @@ namespace AlgorithmsDataStructures
             Node2 firstListPointer = _firstList.head;
             Node2 secondListPointer = _secondList.head;
 
-            while (firstListPointer != null && secondListPointer != null)
+            while (firstListPointer != null)
             {
                 var sum = firstListPointer.value + secondListPointer.value;
                 result.Add(sum);

@@ -72,47 +72,6 @@ namespace AlgorithmsDataStructures
             return nodes;
         }
 
-        public bool Remove(int _value)
-        {
-            if (head == null)
-                return false;
-
-            if (head.value == _value)
-            {
-                if (head == tail)
-                {
-                    Clear();
-                }
-                else
-                {
-                    head = head.next;
-                    head.prev = null;
-                }
-                return true;
-            }
-
-            if (tail.value == _value)
-            {
-                tail = tail.prev;
-                tail.next = null;
-                return true;
-            }
-            
-            
-            Node node = head;
-            while (node != null)
-            {
-                if (node.value == _value)
-                {
-                    node.prev.next = node.next;
-                    node.next.prev = node.prev;    
-                    return true;
-                }
-                node = node.next;
-            }
-            return false;
-        }
-
         public void RemoveAll(int _value)
         {
             if (head == null)
@@ -158,24 +117,65 @@ namespace AlgorithmsDataStructures
             }     
         }
 
-        public void Clear()
+        public bool Remove(int _value)
         {
-            head = null;
-            tail = null;
-        }
+            if (head == null)
+                return false;
 
-        public int Count()
-        {
-            int count = 0;
+            if (head.value == _value)
+            {
+                if (head == tail)
+                {
+                    Clear();
+                }
+                else
+                {
+                    head = head.next;
+                    head.prev = null;
+                }
+                return true;
+            }
+
+            if (tail.value == _value)
+            {
+                tail = tail.prev;
+                tail.next = null;
+                return true;
+            }
+            
+            
             Node node = head;
             while (node != null)
             {
-                count++;
+                if (node.value == _value)
+                {
+                    node.prev.next = node.next;
+                    node.next.prev = node.prev;    
+                    return true;
+                }
                 node = node.next;
             }
-
-            return count;
+            return false;
         }
+
+            public void Clear()
+            {
+                head = null;
+                tail = null;
+            }
+
+            public int Count()
+            {
+                int count = 0;
+                Node node = head;
+                while (node != null)
+                {
+                    count++;
+                    node = node.next;
+                }
+
+                return count;
+            }
 
         public void InsertAfter(Node _nodeAfter, Node _nodeToInsert)
         {

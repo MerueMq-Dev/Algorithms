@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DynArray.cs" />
-    <Compile Include="LinkedList.cs" />
-    <Compile Include="LinkedList2.cs" />
-    <Compile Include="LinkedListExtention.cs" />
+    <Compile Include="LinkedList2\DummyLinkedList.cs" />
+    <Compile Include="LinkedList2\LinkedList2.cs" />
+    <Compile Include="LinkedList2\LinkedList2Extension.cs" />
+    <Compile Include="LinkedList\LinkedList.cs" />
+    <Compile Include="LinkedList\LinkedListExtension.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
