@@ -17,18 +17,21 @@ namespace AlgorithmsDataStructures
 
         public static bool IsCyclic(this LinkedList2 source)
         {
-            var nodes = new HashSet<Node>();
+            
+            var fstPointer = source.head;
+            var sndPointer = source.head;
 
-            for (var currentNode = source.head; currentNode != null; currentNode = currentNode.next)
+            while (fstPointer != null &&  sndPointer != null)
             {
-                if (!nodes.Add(currentNode))
+                fstPointer = fstPointer.next;
+                sndPointer = sndPointer.next.next;
+                
+                if (fstPointer == sndPointer)
                 {
                     return true;
                 }
-
-                nodes.Add(currentNode);
             }
-
+            
             return false;
         }
 
@@ -79,7 +82,7 @@ namespace AlgorithmsDataStructures
         
         // For testing purposes
         public static void CreateCyclic(this LinkedList2 source, int value)
-        {
+        {   
             var node = source.Find(value);
             var newNode = new Node(value);
             newNode.next = node;

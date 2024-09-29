@@ -7,8 +7,14 @@ namespace AlgorithmsDataStructures
         public int value;
         public Node next, prev;
 
-        public Node(int _value) { 
-            value = _value; 
+        public Node()
+        {
+            
+        }
+        
+        public Node(int _value)
+        {
+            value = _value;
             next = null;
             prev = null;
         }
@@ -34,17 +40,21 @@ namespace AlgorithmsDataStructures
                 AddInTail(node);
             }
         }
-        
+
         public void AddInTail(Node _item)
         {
-            if (head == null) {
+            if (head == null)
+            {
                 head = _item;
                 head.next = null;
                 head.prev = null;
-            } else {
+            }
+            else
+            {
                 tail.next = _item;
                 _item.prev = tail;
             }
+
             tail = _item;
         }
 
@@ -69,6 +79,7 @@ namespace AlgorithmsDataStructures
                 if (node.value == _value) nodes.Add(node);
                 node = node.next;
             }
+
             return nodes;
         }
 
@@ -90,7 +101,7 @@ namespace AlgorithmsDataStructures
                 }
             }
 
-            
+
             while (tail != null && tail.value == _value)
             {
                 if (head == tail)
@@ -103,8 +114,8 @@ namespace AlgorithmsDataStructures
                     tail.next = null;
                 }
             }
-         
-            
+
+
             Node node = head;
             while (node != null)
             {
@@ -113,8 +124,9 @@ namespace AlgorithmsDataStructures
                     node.next.prev = node?.prev;
                     node.prev.next = node?.next;
                 }
+
                 node = node.next;
-            }     
+            }
         }
 
         public bool Remove(int _value)
@@ -133,6 +145,7 @@ namespace AlgorithmsDataStructures
                     head = head.next;
                     head.prev = null;
                 }
+
                 return true;
             }
 
@@ -142,40 +155,42 @@ namespace AlgorithmsDataStructures
                 tail.next = null;
                 return true;
             }
-            
-            
+
+
             Node node = head;
             while (node != null)
             {
                 if (node.value == _value)
                 {
                     node.prev.next = node.next;
-                    node.next.prev = node.prev;    
+                    node.next.prev = node.prev;
                     return true;
                 }
+
                 node = node.next;
             }
+
             return false;
         }
 
-            public void Clear()
+        public void Clear()
+        {
+            head = null;
+            tail = null;
+        }
+
+        public int Count()
+        {
+            int count = 0;
+            Node node = head;
+            while (node != null)
             {
-                head = null;
-                tail = null;
+                count++;
+                node = node.next;
             }
 
-            public int Count()
-            {
-                int count = 0;
-                Node node = head;
-                while (node != null)
-                {
-                    count++;
-                    node = node.next;
-                }
-
-                return count;
-            }
+            return count;
+        }
 
         public void InsertAfter(Node _nodeAfter, Node _nodeToInsert)
         {
@@ -199,7 +214,7 @@ namespace AlgorithmsDataStructures
                 head = _nodeToInsert;
                 return;
             }
-            
+
             if (head == tail)
             {
                 head.next = _nodeToInsert;
@@ -228,6 +243,7 @@ namespace AlgorithmsDataStructures
                     node.next = _nodeToInsert;
                     return;
                 }
+
                 node = node.next;
             }
         }
