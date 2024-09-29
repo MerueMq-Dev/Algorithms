@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deque\Deque.cs" />
     <Compile Include="DynArray.cs" />
     <Compile Include="LinkedList2\DummyLinkedList.cs" />
     <Compile Include="LinkedList2\LinkedList2.cs" />
