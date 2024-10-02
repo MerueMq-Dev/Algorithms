@@ -17,22 +17,18 @@ namespace AlgorithmsDataStructures
 
         public static bool IsCyclic(this LinkedList2 source)
         {
-            
-            var fstPointer = source.head;
-            var sndPointer = source.head;
-
-            while (fstPointer != null &&  sndPointer != null)
+            var elementsCount = source.Count();
+            var currentNode = source.head;
+            for (int i = 0; i != elementsCount; i++)
             {
-                fstPointer = fstPointer.next;
-                sndPointer = sndPointer.next.next;
-                
-                if (fstPointer == sndPointer)
-                {
-                    return true;
-                }
+                currentNode = currentNode.next;
+            }
+            if (currentNode == null)
+            {
+                return false;
             }
             
-            return false;
+            return true;
         }
 
         public static void Sort(this LinkedList2 source)
@@ -78,17 +74,11 @@ namespace AlgorithmsDataStructures
         }
 
         
-        
-        
         // For testing purposes
-        public static void CreateCyclic(this LinkedList2 source, int value)
-        {   
-            var node = source.Find(value);
-            var newNode = new Node(value);
-            newNode.next = node;
-            source.tail.next = newNode;
-            newNode.prev = source.tail;
-            source.tail = newNode;
+        public static void CreateCyclic(this LinkedList2 source)
+        {
+            source.tail.next = source.head;
+            source.head.prev = source.tail;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
 {
@@ -80,6 +81,7 @@ namespace AlgorithmsDataStructures
                 node = node.next;
             }
 
+        
             return nodes;
         }
 
@@ -176,14 +178,21 @@ namespace AlgorithmsDataStructures
         public void Clear()
         {
             head = null;
-            tail = null;
+            tail = null;    
         }
 
         public int Count()
         {
             int count = 0;
             Node node = head;
-            while (node != null)
+
+            if (node != null)
+            {
+                count++;
+                node = node.next;
+            }
+            
+            while (node != head && node != null)
             {
                 count++;
                 node = node.next;
@@ -230,7 +239,7 @@ namespace AlgorithmsDataStructures
                 _nodeToInsert.next = null;
                 tail = tail.next;
                 return;
-            }
+            }   
 
             Node node = head;
             while (node != null)
