@@ -18,13 +18,9 @@ namespace AlgorithmsDataStructures
 
         public int HashFun(string value)
         {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                var hashBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(value));
-                var hash = BitConverter.ToInt32(hashBytes, 0);
-                var slotIndex = Math.Abs(hash % size); 
-                return slotIndex;
-            }
+            var valueHash = value.GetHashCode();
+            var slotIndex = Math.Abs(valueHash % size);
+            return slotIndex;
         }
 
         public int Put(string value)
