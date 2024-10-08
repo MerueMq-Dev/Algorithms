@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Deque\Deque.cs" />
     <Compile Include="DynArray.cs" />
+    <Compile Include="HashTable.cs" />
     <Compile Include="LinkedList2\DummyLinkedList.cs" />
     <Compile Include="LinkedList2\LinkedList2.cs" />
     <Compile Include="LinkedList2\LinkedList2Extension.cs" />
