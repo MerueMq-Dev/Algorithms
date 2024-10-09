@@ -87,7 +87,7 @@ namespace Algorithms.Tests
         }
 
         [Fact]
-        public void Find_ShouldReturnMatchingElement_WhenElementExistAndOrderedListInAscMode()
+        public void Find_ShouldReturnMatchingElement_WhenElementExistsAndOrderedListInAscMode()
         {
             var expectedValue = "9";
             var orderedList = new OrderedList<string>(true, "6", "5", "9", "2");
@@ -108,7 +108,7 @@ namespace Algorithms.Tests
         }
 
         [Fact]
-        public void Find_ShouldReturnMatchingElement_WhenElementExistAndOrderedListInDescMode()
+        public void Find_ShouldReturnMatchingElement_WhenElementExistsAndOrderedListInDescMode()
         {
             var expectedValue = "4";
             var orderedList = new OrderedList<string>(false, "1", "9", "4", "2");

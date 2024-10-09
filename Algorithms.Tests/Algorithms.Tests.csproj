@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="DequeTest.cs" />
     <Compile Include="DynArrayTest.cs" />
+    <Compile Include="HashTableTest.cs" />
     <Compile Include="LinkedList2Test.cs" />
     <Compile Include="LinkedListTest.cs" />
     <Compile Include="OrderedListTest.cs" />
