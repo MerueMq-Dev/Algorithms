@@ -211,7 +211,7 @@ namespace Algorithms.Tests
         {
             PowerSet<string> mainSet = new PowerSet<string>();
             PowerSet<string> parameterSet = new PowerSet<string>();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 20000; i++)
             {
                 mainSet.Put("String" + i);
                 parameterSet.Put("String2" + i);

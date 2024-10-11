@@ -9,6 +9,9 @@ namespace AlgorithmsDataStructures
 
         public PowerSet(int sz = 20, int stp = 3) : base(sz, stp)
         {
+            step = stp;
+            size = sz;
+            slots = new string[size];
             _sorcePowerSet = new List<T>();
         }
 
