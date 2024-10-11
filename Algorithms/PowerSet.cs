@@ -22,19 +22,24 @@ namespace AlgorithmsDataStructures
 
         public void Put(T value)
         {
-            if (_sorcePowerSet.Contains(value))
+            if (0 > Put(value as string))
+            {
                 return;
-
+            }
             _sorcePowerSet.Add(value);
         }
 
         public bool Get(T value)
         {
-            return _sorcePowerSet.Contains(value);
+            return Find(value as string) >= 0;
         }
 
         public bool Remove(T value)
         {
+            var slotIndex = Find(value as string);
+            if (slotIndex < 0)
+                return false;
+            slots[slotIndex] = null;
             return _sorcePowerSet.Remove(value);
         }
 
@@ -81,7 +86,6 @@ namespace AlgorithmsDataStructures
             {
                 if (set2.Get(item))
                     count++;
-
             }
 
             return count == set2.Size(); 
