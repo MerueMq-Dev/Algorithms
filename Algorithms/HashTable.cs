@@ -1,6 +1,6 @@
 using System;
 
-namespace AlgorithmsDataStructures
+namespace AlgorithmsDataStructures_HashTable
 {
     public class HashTable
     {

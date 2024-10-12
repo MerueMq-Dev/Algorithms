@@ -1,4 +1,4 @@
-using AlgorithmsDataStructures;
+using AlgorithmsDataStructures_HashTable;
 using FluentAssertions;
 using Xunit;
 
