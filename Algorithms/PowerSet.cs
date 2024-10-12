@@ -22,10 +22,12 @@ namespace AlgorithmsDataStructures
 
         public void Put(T value)
         {
-            if (0 > Put(value as string))
-            {
+            if (Get(value))
                 return;
-            }
+
+            if (0 > Put(value as string))
+                return;
+
             _sorcePowerSet.Add(value);
         }
 
@@ -75,7 +77,7 @@ namespace AlgorithmsDataStructures
                 if (!set2.Get(item))
                     result.Put(item);
             }
-            
+
             return result;
         }
 
@@ -88,16 +90,16 @@ namespace AlgorithmsDataStructures
                     count++;
             }
 
-            return count == set2.Size(); 
+            return count == set2.Size();
         }
 
         public bool Equals(PowerSet<T> set2)
         {
             if (_sorcePowerSet.Count != set2.Size())
                 return false;
-            
+
             foreach (var item in _sorcePowerSet)
-            {   
+            {
                 if (!set2.Get(item))
                     return false;
             }
