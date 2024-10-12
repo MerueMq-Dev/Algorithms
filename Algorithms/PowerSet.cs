@@ -96,7 +96,7 @@ namespace AlgorithmsDataStructures
     {
         public List<T> _sorcePowerSet;
 
-        public PowerSet(int sz = 20, int stp = 3) : base(sz, stp)
+        public PowerSet(int sz = 20000, int stp = 3) : base(sz, stp)
         {
             step = stp;
             size = sz;
