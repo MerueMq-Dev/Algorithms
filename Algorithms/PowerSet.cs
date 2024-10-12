@@ -3,28 +3,28 @@ using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
 {
-    public class HashTable<T>
+    public class HashTable
     {
         public int size;
         public int step;
-        public T[] slots;
+        public string[] slots;
 
         public HashTable(int sz, int stp)
         {
             size = sz;
             step = stp;
-            slots = new T[size];
+            slots = new string[size];
             for (int i = 0; i < size; i++) slots[i] = default;
         }
 
-        protected int HashFun(T value)
+        protected int HashFun(string value)
         {
             var valueHash = value.GetHashCode();
             var slotIndex = Math.Abs(valueHash % size);
             return slotIndex;
         }
 
-        protected int Put(T value)
+        protected int Put(string value)
         {
             var slotIndex = SeekSlot(value);
 
@@ -37,17 +37,25 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        protected int Find(T value)
+        protected int Find(string value)
         {
             var slotIndex = HashFun(value);
-            if (slots[slotIndex] != null && Comparer<T>.Default.Compare(slots[slotIndex], value) == 0)
+            if (slots[slotIndex] != null && slots[slotIndex] == value)
             {
                 return slotIndex;
             }
 
             for (var startIndex = slotIndex; startIndex <= size - 1; startIndex += step)
             {
-                if (slots[startIndex] != null && Comparer<T>.Default.Compare(slots[slotIndex], value) == 0)
+                if (slots[startIndex] != null && slots[slotIndex] == value)
+                {
+                    return startIndex;
+                }
+            }
+
+            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            {
+                if (slots[startIndex] != null && slots[startIndex] == value)
                 {
                     return startIndex;
                 }
@@ -56,27 +64,35 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        protected int SeekSlot(T value)
+        protected int SeekSlot(string value)
         {
             var slotIndex = HashFun(value);
-            if (Comparer<T>.Default.Compare(slots[slotIndex], default) == 0)
+            if (slots[slotIndex] == null)
             {
                 return slotIndex;
             }
 
             for (var startIndex = slotIndex; startIndex <= size - 1; startIndex += step)
             {
-                if (Comparer<T>.Default.Compare(slots[slotIndex], default) == 0)
+                if (slots[startIndex] == null)
                 {
                     return startIndex;
                 }
-            }  
+            }
+
+            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            {
+                if (slots[startIndex] == null)
+                {
+                    return startIndex;
+                }
+            }
             
             return -1;
         }
     }
-    
-    public class PowerSet<T> : HashTable<T>
+
+    public class PowerSet<T> : HashTable
     {
         public List<T> _sorcePowerSet;
 
@@ -84,7 +100,7 @@ namespace AlgorithmsDataStructures
         {
             step = stp;
             size = sz;
-            slots = new T[size];
+            slots = new string[size];
             _sorcePowerSet = new List<T>();
         }
 
@@ -98,7 +114,7 @@ namespace AlgorithmsDataStructures
             if (Get(value))
                 return;
 
-            if (0 > base.Put(value))
+            if (0 > base.Put(value as string))
                 return;
 
             _sorcePowerSet.Add(value);
@@ -106,12 +122,12 @@ namespace AlgorithmsDataStructures
 
         public bool Get(T value)
         {
-            return Find(value) >= 0;
+            return Find(value as string) >= 0;
         }
 
         public bool Remove(T value)
         {
-            var slotIndex = Find(value);
+            var slotIndex = Find(value as string);
             if (slotIndex < 0)
                 return false;
             slots[slotIndex] = default;
