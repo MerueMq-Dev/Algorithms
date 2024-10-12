@@ -53,13 +53,13 @@ namespace AlgorithmsDataStructures
                 }
             }
 
-            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
-            {
-                if (slots[startIndex] != null && slots[startIndex] == value)
-                {
-                    return startIndex;
-                }
-            }
+            // for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            // {
+            //     if (slots[startIndex] != null && slots[startIndex] == value)
+            //     {
+            //         return startIndex;
+            //     }
+            // }
 
             return -1;
         }
@@ -79,14 +79,14 @@ namespace AlgorithmsDataStructures
                     return startIndex;
                 }
             }
-
-            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
-            {
-                if (slots[startIndex] == null)
-                {
-                    return startIndex;
-                }
-            }
+            //
+            // for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            // {
+            //     if (slots[startIndex] == null)
+            //     {
+            //         return startIndex;
+            //     }
+            // }
             
             return -1;
         }
