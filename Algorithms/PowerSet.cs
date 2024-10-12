@@ -17,14 +17,14 @@ namespace AlgorithmsDataStructures
             for (int i = 0; i < size; i++) slots[i] = null;
         }
 
-        public int HashFun(string value)
+        protected int HashFun(string value)
         {
             var valueHash = value.GetHashCode();
             var slotIndex = Math.Abs(valueHash % size);
             return slotIndex;
         }
 
-        public int Put(string value)
+        protected int Put(string value)
         {
             var slotIndex = SeekSlot(value);
 
@@ -37,7 +37,7 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        public int Find(string value)
+        protected int Find(string value)
         {
             var slotIndex = HashFun(value);
             if (slots[slotIndex] != null && slots[slotIndex] == value)
@@ -56,7 +56,7 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        public int SeekSlot(string value)
+        protected int SeekSlot(string value)
         {
             var slotIndex = HashFun(value);
             if (slots[slotIndex] == null)
