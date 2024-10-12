@@ -3,28 +3,28 @@ using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
 {
-    public class HashTable
+    public class HashTable<T>
     {
         public int size;
         public int step;
-        public string[] slots;
+        public T[] slots;
 
         public HashTable(int sz, int stp)
         {
             size = sz;
             step = stp;
-            slots = new string[size];
-            for (int i = 0; i < size; i++) slots[i] = null;
+            slots = new T[size];
+            for (int i = 0; i < size; i++) slots[i] = default;
         }
 
-        protected int HashFun(string value)
+        protected int HashFun(T value)
         {
             var valueHash = value.GetHashCode();
             var slotIndex = Math.Abs(valueHash % size);
             return slotIndex;
         }
 
-        protected int Put(string value)
+        protected int Put(T value)
         {
             var slotIndex = SeekSlot(value);
 
@@ -37,17 +37,17 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        protected int Find(string value)
+        protected int Find(T value)
         {
             var slotIndex = HashFun(value);
-            if (slots[slotIndex] != null && slots[slotIndex] == value)
+            if (slots[slotIndex] != null && Comparer<T>.Default.Compare(slots[slotIndex], value) == 0)
             {
                 return slotIndex;
             }
 
             for (var startIndex = slotIndex; startIndex <= size - 1; startIndex += step)
             {
-                if (slots[startIndex] != null && slots[startIndex] == value)
+                if (slots[startIndex] != null && Comparer<T>.Default.Compare(slots[slotIndex], value) == 0)
                 {
                     return startIndex;
                 }
@@ -56,17 +56,17 @@ namespace AlgorithmsDataStructures
             return -1;
         }
 
-        protected int SeekSlot(string value)
+        protected int SeekSlot(T value)
         {
             var slotIndex = HashFun(value);
-            if (slots[slotIndex] == null)
+            if (Comparer<T>.Default.Compare(slots[slotIndex], default) == 0)
             {
                 return slotIndex;
             }
 
             for (var startIndex = slotIndex; startIndex <= size - 1; startIndex += step)
             {
-                if (slots[startIndex] == null)
+                if (Comparer<T>.Default.Compare(slots[slotIndex], default) == 0)
                 {
                     return startIndex;
                 }
@@ -76,7 +76,7 @@ namespace AlgorithmsDataStructures
         }
     }
     
-    public class PowerSet<T> : HashTable
+    public class PowerSet<T> : HashTable<T>
     {
         public List<T> _sorcePowerSet;
 
@@ -84,7 +84,7 @@ namespace AlgorithmsDataStructures
         {
             step = stp;
             size = sz;
-            slots = new string[size];
+            slots = new T[size];
             _sorcePowerSet = new List<T>();
         }
 
@@ -98,7 +98,7 @@ namespace AlgorithmsDataStructures
             if (Get(value))
                 return;
 
-            if (0 > Put(value as string))
+            if (0 > base.Put(value))
                 return;
 
             _sorcePowerSet.Add(value);
@@ -106,15 +106,15 @@ namespace AlgorithmsDataStructures
 
         public bool Get(T value)
         {
-            return Find(value as string) >= 0;
+            return Find(value) >= 0;
         }
 
         public bool Remove(T value)
         {
-            var slotIndex = Find(value as string);
+            var slotIndex = Find(value);
             if (slotIndex < 0)
                 return false;
-            slots[slotIndex] = null;
+            slots[slotIndex] = default;
             return _sorcePowerSet.Remove(value);
         }
 
