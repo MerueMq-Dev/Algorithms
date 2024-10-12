@@ -23,7 +23,20 @@ namespace AlgorithmsDataStructures
             var slotIndex = Math.Abs(valueHash % size);
             return slotIndex;
         }
-        
+
+        public int Put(string value)
+        {
+            var slotIndex = SeekSlot(value);
+
+            if (slotIndex != -1)
+            {
+                slots[slotIndex] = value;
+                return slotIndex;
+            }
+
+            return -1;
+        }
+
         public int Find(string value)
         {
             var slotIndex = HashFun(value);
