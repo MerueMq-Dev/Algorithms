@@ -23,20 +23,7 @@ namespace AlgorithmsDataStructures
             var slotIndex = Math.Abs(valueHash % size);
             return slotIndex;
         }
-
-        public int Put(string value)
-        {
-            var slotIndex = SeekSlot(value);
-
-            if (slotIndex != -1)
-            {
-                slots[slotIndex] = value;
-                return slotIndex;
-            }
-
-            return -1;
-        }
-
+        
         public int Find(string value)
         {
             var slotIndex = HashFun(value);
@@ -78,7 +65,7 @@ namespace AlgorithmsDataStructures
     
     public class PowerSet<T> : HashTable
     {
-        private List<T> _sorcePowerSet;
+        public List<T> _sorcePowerSet;
 
         public PowerSet(int sz = 20, int stp = 3) : base(sz, stp)
         {
