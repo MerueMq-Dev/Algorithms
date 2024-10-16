@@ -14,7 +14,7 @@ namespace AlgorithmsDataStructures
             size = sz;
             step = stp;
             slots = new string[size];
-            for (int i = 0; i < size; i++) slots[i] = default;
+        for (int i = 0; i < size; i++) slots[i] = default;
         }
 
         protected int HashFun(string value)
@@ -47,18 +47,24 @@ namespace AlgorithmsDataStructures
 
             for (var startIndex = slotIndex; startIndex <= size - 1; startIndex += step)
             {
-                if (slots[startIndex] != null && slots[slotIndex] == value)
+                if (slots[startIndex] != null && slots[startIndex] == value)
                 {
                     return startIndex;
                 }
             }
 
-            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            for (var startIndex = 0; startIndex != slotIndex && startIndex < slotIndex ; startIndex += step)
             {
                 if (slots[startIndex] != null && slots[startIndex] == value)
                 {
                     return startIndex;
                 }
+
+                // if (startIndex > slotIndex || startIndex + step > slots.Length)
+                // {
+                //     startIndex = 0;
+                // }
+                
             }
 
             return -1;
@@ -78,9 +84,9 @@ namespace AlgorithmsDataStructures
                 {
                     return startIndex;
                 }
-            }
+            }   
 
-            for (var startIndex = 0; startIndex != slotIndex; startIndex++)
+            for (var startIndex = 0; startIndex != slotIndex && startIndex < slotIndex ; startIndex += step)
             {
                 if (slots[startIndex] == null)
                 {
@@ -94,12 +100,12 @@ namespace AlgorithmsDataStructures
 
     public class PowerSet<T> : HashTable
     {
-        public List<T> _sorcePowerSet;
+        public List<T> _sorcePowerSet;  
 
-        public PowerSet(int sz = 20000, int stp = 1) : base(sz, stp)
+        public PowerSet(int sz = 20000, int stp = 10) : base(sz, stp)
         {
             step = stp;
-            size = sz;
+            size = sz / 2 + sz;
             slots = new string[size];
             _sorcePowerSet = new List<T>();
         }

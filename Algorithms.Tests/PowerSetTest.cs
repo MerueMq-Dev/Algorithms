@@ -209,10 +209,11 @@ namespace Algorithms.Tests
         [Fact]
         public void Equals_ShouldReturnFalse_WhenSomeParameterNotInCurrent()
         {
-            PowerSet<string> mainSet = new PowerSet<string>();
-            PowerSet<string> parameterSet = new PowerSet<string>();
+            PowerSet<string> mainSet = new PowerSet<string>(20000,10);
+            PowerSet<string> parameterSet = new PowerSet<string>(20000,10);
             for (int i = 0; i < 20000; i++)
             {
+                
                 mainSet.Put("String" + i);
                 parameterSet.Put("String2" + i);
             }
@@ -225,8 +226,8 @@ namespace Algorithms.Tests
         [Fact]
         public void Equals_ShouldReturnTrue_WhenBothSetsHaveCommonValues()
         {
-            PowerSet<string> mainSet = new PowerSet<string>();
-            PowerSet<string> parameterSet = new PowerSet<string>();
+            PowerSet<string> mainSet = new PowerSet<string>(20000,10);
+            PowerSet<string> parameterSet = new PowerSet<string>(20000,10);
             for (int i = 0; i < 20000; i++)
             {
                 mainSet.Put("String" + i);
