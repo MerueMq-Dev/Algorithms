@@ -155,12 +155,19 @@ namespace AlgorithmsDataStructures
 
         public PowerSet<T> Union(PowerSet<T> set2)
         {
+            var resultSet = new PowerSet<T>();
+
+            foreach (var value in set2._sorcePowerSet)
+            {
+                resultSet.Put(value);
+            }
+            
             foreach (var item in _sorcePowerSet)
             {
-                set2.Put(item);
+                resultSet.Put(item);
             }
 
-            return set2;
+            return resultSet;
         }
 
         public PowerSet<T> Difference(PowerSet<T> set2)
