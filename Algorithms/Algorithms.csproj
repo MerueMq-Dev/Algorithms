@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BloomFilter.cs" />
     <Compile Include="Deque\Deque.cs" />
     <Compile Include="DynArray.cs" />
     <Compile Include="HashTable.cs" />
