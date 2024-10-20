@@ -53,6 +53,7 @@
     <Compile Include="LinkedList2\OneDummyNodeLinkedList.cs" />
     <Compile Include="LinkedList\LinkedList.cs" />
     <Compile Include="LinkedList\LinkedListExtension.cs" />
+    <Compile Include="NativeCache.cs" />
     <Compile Include="NativeDictionary.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="OrderedList.cs" />
